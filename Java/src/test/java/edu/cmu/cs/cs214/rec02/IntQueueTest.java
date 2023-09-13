@@ -33,8 +33,8 @@ public class IntQueueTest {
     @Before
     public void setUp() {
         // comment/uncomment these lines to test each class
-        mQueue = new LinkedIntQueue();
-//        mQueue = new ArrayIntQueue();
+        // mQueue = new LinkedIntQueue();
+        mQueue = new ArrayIntQueue();
 
         testList = new ArrayList<>(List.of(1, 2, 3));
     }
@@ -100,5 +100,28 @@ public class IntQueueTest {
         }
     }
 
+    @Test
+    public void testDequeueEmpty() {
+        assertTrue(mQueue.isEmpty());
+        assertNull(mQueue.dequeue());
+    }
+
+    @Test
+    public void testClear() {
+        mQueue.enqueue(1);
+        assertFalse(mQueue.isEmpty());
+        mQueue.clear();
+        assertTrue(mQueue.isEmpty());
+    }
+
+    @Test
+    public void testEnsureCapacity() {
+        for (int i = 0; i < 11; i++) {
+            mQueue.enqueue(i);
+        }
+        for (int i = 0; i < 10; i++) {
+            mQueue.dequeue();
+        }
+    }
 
 }
