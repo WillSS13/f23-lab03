@@ -53,3 +53,24 @@ describe("test size: ", ()=> {
         expect(queue.size()).toBe(11)
     })
 })
+
+test("test clear: ", () => {
+    const queue = createQueue()
+    queue.enqueue(1)
+    expect(!queue.isEmpty)
+    queue.clear()
+    expect(queue.isEmpty())
+})
+
+test("test dequeue: ", () => {
+    const queue = createQueue()
+    queue.enqueue(1)
+    expect(!queue.isEmpty)
+    queue.dequeue()
+    expect(queue.isEmpty())
+})
+
+test("test dequeue: empty queue", () => {
+    const queue = createQueue()
+    expect(queue.dequeue() === null)
+})
